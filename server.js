@@ -4,6 +4,8 @@ const ejs = require("ejs");
 const path = require("path");
 const mongoose = require("mongoose");
 require("dotenv").config();
+const port = process.env.PORT || 3000;
+
 
 app.set("views", path.join(__dirname, "/views"))
 app.set("view engine", "ejs");
@@ -12,6 +14,8 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+
 
 
 // database config----
@@ -54,6 +58,6 @@ app.use("/add-paragraph", addParagraph);
 
 
 
-app.listen("3000", () => {
-    console.log("Server is running on port 3000")
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`)
 });
